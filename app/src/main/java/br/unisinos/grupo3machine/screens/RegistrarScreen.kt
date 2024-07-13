@@ -50,7 +50,7 @@ fun CadastrarScreen() {
                 viewModel.updateName(newValue)
             },
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(24.dp))
         ElevatedButton(
             enabled = enabled,
             onClick = {
@@ -66,8 +66,9 @@ fun CadastrarScreen() {
                 viewModel.getQrCode()
             }
         ) {
-            Text("Gerar QR Code")
+            Text("Gerar QR Code", fontSize = 16.sp)
         }
+        Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
             if (machine.qrCode == null) {
                 Toast.makeText(context, "Gerar QR Code antes de salvar", Toast.LENGTH_LONG).show()
@@ -82,7 +83,7 @@ fun CadastrarScreen() {
             Toast.makeText(context, "Novo equipamento adicionado com sucesso!", Toast.LENGTH_LONG)
                 .show()
         }) {
-            Text("Salvar")
+            Text("Salvar", fontSize = 16.sp)
         }
         Spacer(modifier = Modifier.height(30.dp))
         if (machine.qrCode != null) {

@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 const val MAIN_SCREEN = "MainScreen"
@@ -27,13 +28,13 @@ fun MainScreen(navigation: NavHostController) {
         Button(onClick = {
             navigation.navigate(CADASTRAR_SCREEN)
         }) {
-            Text(text = "Cadastrar")
+            Text(text = "Cadastrar", fontSize = 16.sp)
         }
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
             navigation.navigate(CONSULTAR_SCREEN)
         }) {
-            Text(text = "Consultar")
+            Text(text = "Consultar", fontSize = 16.sp)
         }
     }
 }

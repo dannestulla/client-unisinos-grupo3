@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 fun QrCodeCard(name: String, qrCode: Bitmap, dateCreated: String) {
     Card(
         modifier = Modifier
-            .padding(16.dp)
+            .padding(8.dp)
             .fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(8.dp)
