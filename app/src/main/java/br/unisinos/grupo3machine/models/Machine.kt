@@ -1,6 +1,5 @@
 package br.unisinos.grupo3machine.models
 
-import android.graphics.Bitmap
 import java.util.Date
 
 data class Machine(

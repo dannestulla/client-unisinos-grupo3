@@ -8,9 +8,7 @@ import androidx.lifecycle.viewModelScope
 import br.unisinos.grupo3machine.MachineRepository
 import br.unisinos.grupo3machine.models.Machine
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import java.util.Date
 
 class RegistrarViewModel : ViewModel() {
     private val mongoRepository = MachineRepository()
@@ -40,7 +38,7 @@ class RegistrarViewModel : ViewModel() {
      */
     fun getQrCode() {
         async.launch {
-            val response : ByteArray = mongoRepository.getQrCode(machine.value.name)
+            val response: ByteArray = mongoRepository.getQrCode(machine.value.name)
             _machine.value = _machine.value.copy(
                 qrCode = response
             )
@@ -48,6 +46,6 @@ class RegistrarViewModel : ViewModel() {
     }
 
     fun transformToImage(qrCode: ByteArray): ImageBitmap {
-       return BitmapFactory.decodeByteArray(qrCode, 0,qrCode.size).asImageBitmap()
+        return BitmapFactory.decodeByteArray(qrCode, 0, qrCode.size).asImageBitmap()
     }
 }

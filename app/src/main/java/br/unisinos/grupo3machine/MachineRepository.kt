@@ -1,11 +1,10 @@
 package br.unisinos.grupo3machine
 
 import br.unisinos.grupo3machine.models.Machine
-import br.unisinos.grupo3machine.models.QrBody
 import br.unisinos.grupo3machine.models.ResponseMachine
-import io.ktor.client.*
+import io.ktor.client.HttpClient
 import io.ktor.client.call.body
-import io.ktor.client.engine.cio.*
+import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import io.ktor.client.request.post
@@ -22,19 +21,19 @@ class MachineRepository {
     private val qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="
 
     suspend fun save(machine: Machine) {
-        http.post(apiUrl+"machines") {
+        http.post(apiUrl + "machines") {
             contentType(ContentType.Application.Json)
             setBody(machine)
         }
     }
 
     suspend fun getQrCode(machineName: String): ByteArray {
-        val response = http.get(qrCodeUrl+machineName)
+        val response = http.get(qrCodeUrl + machineName)
         return response.readBytes()
     }
 
     suspend fun getAll(): List<ResponseMachine> {
-        val response : List<ResponseMachine> = http.get(apiUrl+"machines").body()
+        val response: List<ResponseMachine> = http.get(apiUrl + "machines").body()
         return response
     }
 

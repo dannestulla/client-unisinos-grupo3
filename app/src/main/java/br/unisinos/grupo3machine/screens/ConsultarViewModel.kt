@@ -1,14 +1,13 @@
 package br.unisinos.grupo3machine.screens
 
+import android.util.Base64
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.unisinos.grupo3machine.MachineRepository
+import br.unisinos.grupo3machine.models.Machine
 import br.unisinos.grupo3machine.models.ResponseMachine
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-
-import android.util.Base64
-import br.unisinos.grupo3machine.models.Machine
 
 
 class ConsultarViewModel : ViewModel() {
@@ -35,11 +34,13 @@ class ConsultarViewModel : ViewModel() {
     private fun convertImage(response: List<ResponseMachine>): List<Machine> {
         val newMachines = mutableListOf<Machine>()
         response.forEach { machine ->
-            newMachines.add(Machine(
-                name = machine.name,
-                qrCode = base64ToByteArray(machine.qrCode!!),
-                dateInserted = machine.dateInserted
-                ))
+            newMachines.add(
+                Machine(
+                    name = machine.name,
+                    qrCode = base64ToByteArray(machine.qrCode!!),
+                    dateInserted = machine.dateInserted
+                )
+            )
 
         }
         return newMachines

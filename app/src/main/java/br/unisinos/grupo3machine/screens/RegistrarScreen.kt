@@ -1,6 +1,5 @@
 package br.unisinos.grupo3machine.screens
 
-import android.graphics.BitmapFactory
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -21,7 +20,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -57,7 +55,11 @@ fun CadastrarScreen() {
             enabled = enabled,
             onClick = {
                 if (machine.name.isEmpty()) {
-                    Toast.makeText(context, "Nome do equipamento não pode ser vazio", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        context,
+                        "Nome do equipamento não pode ser vazio",
+                        Toast.LENGTH_LONG
+                    ).show()
                     return@ElevatedButton
                 }
                 enabled = false
@@ -72,11 +74,13 @@ fun CadastrarScreen() {
                 return@Button
             }
             if (machine.name.isEmpty()) {
-                Toast.makeText(context, "Nome do equipamento não pode ser vazio", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Nome do equipamento não pode ser vazio", Toast.LENGTH_LONG)
+                    .show()
                 return@Button
             }
             viewModel.save()
-            Toast.makeText(context, "Novo equipamento adicionado com sucesso!", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Novo equipamento adicionado com sucesso!", Toast.LENGTH_LONG)
+                .show()
         }) {
             Text("Salvar")
         }
